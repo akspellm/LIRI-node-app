@@ -16,7 +16,18 @@ inquirer.prompt([{
 
 ]).then(function(answer) {
     if (answer.userChoice === 'my tweets') {
-        getTweets();
+
+    	inquirer.prompt([
+    		{
+    			name: 'userName',
+    			message: 'Enter username of Twitter user to display tweets:'
+    		}
+
+    		]). then(function(answer) {
+    			var screen_name = answer.userName;
+
+    			getTweets(screen_name)
+    		})
 
     } else if (answer.userChoice === 'spotify this song') {
         inquirer.prompt([{
@@ -52,6 +63,11 @@ inquirer.prompt([{
         }]).then(function(answer) {
 
             var movieEntry = answer.movieChoice;
+
+            if (movieEntry === "") {
+            	movieEntry = "Mr Nobody";
+            }
+
             var movie = movieEntry.split(' ')
 
             movieThis(movie);
@@ -65,14 +81,20 @@ inquirer.prompt([{
             }
 
             var doThis = data.split(',');
+
             if (doThis[0] === 'spotify-this-song') {
                 spotifyThis('track', doThis[1])
-            } else if (doThis[0] === 'movie-this') {
+            } 
+
+            else if (doThis[0] === 'movie-this') {
                 var movieEntry = doThis[1];
                 var movie = movieEntry.split(' ')
 
                 movieThis(movie);
+            } 
 
+            else if (doThis[0] === 'my_tweets') {
+                getTweets();
             }
         })
     }
