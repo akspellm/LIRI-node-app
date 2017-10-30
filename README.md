@@ -20,8 +20,7 @@ Run 'npm install' to install package.json
 ### Use node to run LIRI.js in the comand line.
 
 * Select 'my tweets' to display latest tweets.
-* Select 'spotify this song' to search for a track or artist to display addition info and get the spotify 
-* link to the artist's page.
+* Select 'spotify this song' to search for a track or artist to display addition info and get the spotify link to the artist's page.
 * Select 'movie this' to search for a movie to display info about that film.
 
 
